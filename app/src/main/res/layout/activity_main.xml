@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/app_name" android:textSize="30sp" android:textStyle="bold" android:textColor="#12382F" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/subtitle" android:textSize="17sp" android:layout_marginTop="8dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/scope" android:textSize="16sp" android:layout_marginTop="24dp" />
+        <Switch android:id="@+id/block_switch" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="64dp" android:layout_marginTop="16dp" android:text="@string/block_all"
+            android:textSize="18sp" android:textStyle="bold" android:switchPadding="12dp" android:saveEnabled="false" />
+        <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp" android:textStyle="bold" android:accessibilityLiveRegion="polite"
+            android:layout_marginTop="12dp" />
+        <TextView android:id="@+id/requirements" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="15sp" android:layout_marginTop="16dp" />
+        <Button android:id="@+id/role_button" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:text="@string/choose_role" android:textAllCaps="false" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/contacts_reason" android:textSize="14sp" android:layout_marginTop="12dp" />
+        <Button android:id="@+id/contacts_button" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/grant_contacts" android:textAllCaps="false" />
+        <Button android:id="@+id/settings_button" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/open_settings" android:textAllCaps="false" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/limits" android:textSize="14sp" android:layout_marginTop="24dp"
+            android:paddingBottom="16dp" />
+    </LinearLayout>
+</ScrollView>

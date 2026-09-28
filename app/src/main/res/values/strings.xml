@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Bloqueio Total</string>
+    <string name="subtitle">Ligações da operadora sob controle.</string>
+    <string name="block_all">Bloquear todas as ligações</string>
+    <string name="scope">Rejeita ligações telefônicas recebidas que o Android entrega ao filtro. WhatsApp, dados móveis e chamadas que você faz continuam independentes.</string>
+    <string name="status_no_role">Sem filtro definido: o app não está bloqueando.</string>
+    <string name="status_partial">Bloqueio parcial: falta permissão de Contatos. Números salvos podem passar.</string>
+    <string name="status_on">Ativado para as chamadas recebidas pelo filtro, incluindo contatos.</string>
+    <string name="status_off">Desativado: o app permite as chamadas.</string>
+    <string name="requirements">Filtro padrão: %1$s\nPermissão de Contatos: %2$s</string>
+    <string name="yes">concedido</string>
+    <string name="no">pendente</string>
+    <string name="choose_role">Definir como filtro de chamadas</string>
+    <string name="grant_contacts">Incluir contatos no filtro</string>
+    <string name="contacts_reason">O Android exige a permissão de Contatos para entregar ao filtro chamadas de números salvos. Este app não consulta nem copia sua agenda.</string>
+    <string name="open_settings">Abrir configurações do app</string>
+    <string name="limits">Limites do Android\nNúmeros ocultos ou indisponíveis podem não chegar ao filtro. O app não garante bloqueio absoluto. O histórico de chamadas bloqueadas pode permanecer; correio de voz e avisos da operadora são independentes.</string>
+    <string name="role_unavailable">Este aparelho não disponibilizou a seleção do filtro de chamadas.</string>
+    <string name="role_denied">Selecione Bloqueio Total como filtro e tente ativar novamente.</string>
+    <string name="contacts_denied">Para ativar com contatos incluídos, conceda a permissão de Contatos.</string>
+    <string name="contacts_title">Incluir contatos no bloqueio</string>
+    <string name="contacts_settings_help">Em Permissões, permita Contatos. Volte ao app e ative o switch novamente.</string>
+</resources>
