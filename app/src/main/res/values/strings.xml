@@ -1,18 +1,23 @@
 <resources>
     <string name="app_name">Bloqueio Total</string>
     <string name="subtitle">Ligações da operadora sob controle.</string>
-    <string name="block_all">Bloquear todas as ligações</string>
-    <string name="scope">Rejeita ligações telefônicas recebidas que o Android entrega ao filtro. WhatsApp, dados móveis e chamadas que você faz continuam independentes.</string>
+    <string name="enable_blocking">Ativar bloqueio</string>
+    <string name="scope">Escolha se os contatos salvos podem ligar. WhatsApp, dados móveis e chamadas que você faz continuam independentes.</string>
+    <string name="block_mode_title">O que bloquear</string>
+    <string name="mode_unsaved">Somente números não salvos</string>
+    <string name="mode_all">Todas as ligações, incluindo contatos</string>
     <string name="status_no_role">Sem filtro definido: o app não está bloqueando.</string>
     <string name="status_partial">Bloqueio parcial: falta permissão de Contatos. Números salvos podem passar.</string>
-    <string name="status_on">Ativado para as chamadas recebidas pelo filtro, incluindo contatos.</string>
+    <string name="status_on_all">Ativado: bloqueia todas as ligações recebidas pelo filtro.</string>
+    <string name="status_on_unsaved">Ativado: contatos salvos podem ligar.</string>
     <string name="status_off">Desativado: o app permite as chamadas.</string>
     <string name="requirements">Filtro padrão: %1$s\nPermissão de Contatos: %2$s</string>
     <string name="yes">concedido</string>
     <string name="no">pendente</string>
+    <string name="not_required">não necessária neste modo</string>
     <string name="choose_role">Definir como filtro de chamadas</string>
     <string name="grant_contacts">Incluir contatos no filtro</string>
-    <string name="contacts_reason">O Android exige a permissão de Contatos para entregar ao filtro chamadas de números salvos. Este app não consulta nem copia sua agenda.</string>
+    <string name="contacts_reason">O Android exige a permissão de Contatos para entregar ao filtro chamadas de números salvos. O app não armazena nem copia seus contatos.</string>
     <string name="open_settings">Abrir configurações do app</string>
     <string name="limits">Limites do Android\nNúmeros ocultos ou indisponíveis podem não chegar ao filtro. O app não garante bloqueio absoluto. O histórico de chamadas bloqueadas pode permanecer; correio de voz e avisos da operadora são independentes.</string>
     <string name="role_unavailable">Este aparelho não disponibilizou a seleção do filtro de chamadas.</string>

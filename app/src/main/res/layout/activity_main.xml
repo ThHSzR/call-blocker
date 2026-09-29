@@ -10,8 +10,20 @@
             android:text="@string/subtitle" android:textSize="17sp" android:layout_marginTop="8dp" />
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/scope" android:textSize="16sp" android:layout_marginTop="24dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/block_mode_title" android:textSize="16sp" android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+        <RadioGroup android:id="@+id/block_mode" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp">
+            <RadioButton android:id="@+id/mode_unsaved" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="48dp"
+                android:text="@string/mode_unsaved" android:textSize="16sp" />
+            <RadioButton android:id="@+id/mode_all" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="48dp"
+                android:text="@string/mode_all" android:textSize="16sp" />
+        </RadioGroup>
         <Switch android:id="@+id/block_switch" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:minHeight="64dp" android:layout_marginTop="16dp" android:text="@string/block_all"
+            android:minHeight="64dp" android:layout_marginTop="16dp" android:text="@string/enable_blocking"
             android:textSize="18sp" android:textStyle="bold" android:switchPadding="12dp" android:saveEnabled="false" />
         <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textSize="16sp" android:textStyle="bold" android:accessibilityLiveRegion="polite"
@@ -20,7 +32,7 @@
             android:textSize="15sp" android:layout_marginTop="16dp" />
         <Button android:id="@+id/role_button" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="20dp" android:text="@string/choose_role" android:textAllCaps="false" />
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        <TextView android:id="@+id/contacts_reason" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/contacts_reason" android:textSize="14sp" android:layout_marginTop="12dp" />
         <Button android:id="@+id/contacts_button" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/grant_contacts" android:textAllCaps="false" />

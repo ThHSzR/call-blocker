@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +22,9 @@ class MainActivity : Activity() {
     private lateinit var prefs: BlockingPreferences
     private lateinit var toggle: Switch
     private lateinit var status: TextView
+    private lateinit var modeOptions: RadioGroup
+    private lateinit var contactsReason: TextView
+    private lateinit var contactsButton: Button
     private var updating = false
     private var pendingActivation = false
     private val roles get() = getSystemService(RoleManager::class.java)
@@ -40,6 +44,21 @@ class MainActivity : Activity() {
         }
         toggle = findViewById(R.id.block_switch)
         status = findViewById(R.id.status)
+        modeOptions = findViewById(R.id.block_mode)
+        contactsReason = findViewById(R.id.contacts_reason)
+        contactsButton = findViewById(R.id.contacts_button)
+        modeOptions.setOnCheckedChangeListener { _, checkedId ->
+            if (!updating) {
+                prefs.mode = when (checkedId) {
+                    R.id.mode_all -> BlockingMode.ALL_CALLS
+                    else -> BlockingMode.UNSAVED_ONLY
+                }
+                if (prefs.enabled && prefs.mode == BlockingMode.ALL_CALLS && !hasContacts()) {
+                    requestContacts()
+                }
+                refresh()
+            }
+        }
         toggle.setOnCheckedChangeListener { _, checked ->
             if (!updating) {
                 if (checked) {
@@ -53,7 +72,7 @@ class MainActivity : Activity() {
             }
         }
         findViewById<Button>(R.id.role_button).setOnClickListener { requestScreeningRole() }
-        findViewById<Button>(R.id.contacts_button).setOnClickListener { requestContacts() }
+        contactsButton.setOnClickListener { requestContacts() }
         findViewById<Button>(R.id.settings_button).setOnClickListener { openAppSettings() }
         refresh()
     }
@@ -68,7 +87,7 @@ class MainActivity : Activity() {
     private fun continueActivation() {
         when {
             !hasRole() -> requestScreeningRole()
-            !hasContacts() -> requestContacts()
+            prefs.mode == BlockingMode.ALL_CALLS && !hasContacts() -> requestContacts()
             else -> { prefs.enabled = true; pendingActivation = false }
         }
         refresh()
@@ -135,21 +154,30 @@ class MainActivity : Activity() {
     private fun refresh() {
         updating = true
         toggle.isChecked = prefs.enabled
+        modeOptions.check(if (prefs.mode == BlockingMode.ALL_CALLS) R.id.mode_all else R.id.mode_unsaved)
         updating = false
         val role = hasRole()
         val contacts = hasContacts()
         status.setText(when {
             !role -> R.string.status_no_role
-            prefs.enabled && !contacts -> R.string.status_partial
-            prefs.enabled -> R.string.status_on
+            prefs.enabled && prefs.mode == BlockingMode.ALL_CALLS && !contacts -> R.string.status_partial
+            prefs.enabled && prefs.mode == BlockingMode.ALL_CALLS -> R.string.status_on_all
+            prefs.enabled -> R.string.status_on_unsaved
             else -> R.string.status_off
         })
+        val contactsState = when {
+            contacts -> R.string.yes
+            prefs.mode == BlockingMode.UNSAVED_ONLY -> R.string.not_required
+            else -> R.string.no
+        }
         findViewById<TextView>(R.id.requirements).text = getString(
             R.string.requirements, getString(if (role) R.string.yes else R.string.no),
-            getString(if (contacts) R.string.yes else R.string.no)
+            getString(contactsState)
         )
         findViewById<Button>(R.id.role_button).isEnabled = !role
-        findViewById<Button>(R.id.contacts_button).isEnabled = !contacts
+        contactsReason.visibility = if (prefs.mode == BlockingMode.ALL_CALLS) View.VISIBLE else View.GONE
+        contactsButton.visibility = if (prefs.mode == BlockingMode.ALL_CALLS) View.VISIBLE else View.GONE
+        contactsButton.isEnabled = !contacts
     }
 
     private companion object {
